@@ -43,7 +43,7 @@ public class AuthController {
 
         response.put("role", user.getRole());
 
-        // ⚠️ password nahi bhejna
+
         user.setPassword(null);
         response.put("user", user);
 

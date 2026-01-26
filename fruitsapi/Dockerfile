@@ -8,6 +8,11 @@ RUN mvn clean package -DskipTests
 # -------- RUN STAGE --------
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
+
+# IMPORTANT: Don't hardcode port
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+
+# Use Render's PORT variable
+CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080}"]
