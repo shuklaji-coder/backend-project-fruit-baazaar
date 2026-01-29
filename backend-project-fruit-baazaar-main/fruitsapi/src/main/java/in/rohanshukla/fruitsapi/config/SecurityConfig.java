@@ -38,7 +38,9 @@ public class SecurityConfig {
                                 "/api/auth/**",
                                 "/api/fruit/**",
                                 "/api/payment/**",
-                                "/api/orders/**",   // 🔥 ADD THIS
+                                "/api/orders/**",
+                                "/api/health/**",
+                                "/",
                                 "/error"
                         ).permitAll()
                         .anyRequest().authenticated()
@@ -69,7 +71,8 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "http://localhost:5174"
+                "http://localhost:5174",
+                "https://backend-project-fruit-baazaar-15.onrender.com"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
