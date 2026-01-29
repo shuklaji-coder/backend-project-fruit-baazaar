@@ -1,0 +1,41 @@
+package in.rohanshukla.fruitsapi.config;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+
+@Configuration
+public class MongoConfig extends AbstractMongoClientConfiguration {
+    
+    private static final Logger logger = LoggerFactory.getLogger(MongoConfig.class);
+    
+    @Value("${spring.data.mongodb.uri}")
+    private String mongoUri;
+    
+    @Value("${spring.data.mongodb.database}")
+    private String databaseName;
+    
+    @Override
+    protected String getDatabaseName() {
+        return databaseName;
+    }
+    
+    @Bean
+    @Override
+    public MongoClient mongoClient() {
+        logger.info("Connecting to MongoDB with URI: {}", mongoUri.replaceAll("://.*@", "://***@"));
+        try {
+            MongoClient client = MongoClients.create(mongoUri);
+            logger.info("MongoDB connection established successfully");
+            return client;
+        } catch (Exception e) {
+            logger.error("Failed to connect to MongoDB: {}", e.getMessage());
+            throw e;
+        }
+    }
+}
