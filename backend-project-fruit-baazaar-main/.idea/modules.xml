@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/fruit and vegetable project  backend.iml" filepath="$PROJECT_DIR$/.idea/fruit and vegetable project  backend.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/.idea/fruit and vegetable backend.iml" filepath="$PROJECT_DIR$/.idea/fruit and vegetable backend.iml" />
->>>>>>> 8e6d93f (Initial backend project upload)
     </modules>
   </component>
 </project>
