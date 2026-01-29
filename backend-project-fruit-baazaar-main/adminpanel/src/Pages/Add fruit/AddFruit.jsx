@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { api, uploadApi } from "../../config/api";
 
 const AddFruit = () => {
   const [name, setName] = useState("");
@@ -10,7 +10,7 @@ const AddFruit = () => {
 
   // 🔹 Load fruits
   const loadFruits = async () => {
-    const res = await axios.get("http://localhost:8080/api/fruit");
+    const res = await api.get("/api/fruit");
     setFruits(res.data);
   };
 
@@ -36,7 +36,7 @@ const AddFruit = () => {
     );
     formData.append("file", image);
 
-    await axios.post("http://localhost:8080/api/fruit", formData);
+    await uploadApi.post("/api/fruit", formData);
 
     setName("");
     setDescription("");
@@ -48,7 +48,7 @@ const AddFruit = () => {
 
   // 🔹 Delete fruit
   const deleteFruit = async (id) => {
-    await axios.delete(`http://localhost:8080/api/fruit/${id}`);
+    await api.delete(`/api/fruit/${id}`);
     loadFruits();
   };
 

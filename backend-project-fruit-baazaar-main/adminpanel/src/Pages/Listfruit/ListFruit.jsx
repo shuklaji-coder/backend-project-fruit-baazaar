@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from "../../config/api";
 
 const ListFruit = () => {
   const [fruits, setFruits] = useState([]);
@@ -9,7 +9,7 @@ const ListFruit = () => {
   // FETCH ALL FRUITS
   const fetchFruits = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/fruit");
+      const response = await api.get("/api/fruit");
       console.log("Fetched fruits:", response.data); // check id field
       setFruits(response.data);
     } catch (err) {
@@ -24,9 +24,7 @@ const ListFruit = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8080/api/fruit/${id}`, {
-        headers: { "Content-Type": "application/json" }, // if required
-      });
+      await api.delete(`/api/fruit/${id}`);
       setMessage("Fruit deleted successfully!");
       fetchFruits(); // reload list
     } catch (err) {
