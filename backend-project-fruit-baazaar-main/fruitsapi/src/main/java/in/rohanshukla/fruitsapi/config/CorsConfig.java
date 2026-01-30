@@ -17,6 +17,7 @@ public class CorsConfig {
                         .allowedOrigins(
                                 "http://localhost:5173",
                                 "http://localhost:5174",
+                                "https://backend-project-fruit-baazaar-15.onrender.com",
                                 "https://adminfruitbazzar.netlify.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
