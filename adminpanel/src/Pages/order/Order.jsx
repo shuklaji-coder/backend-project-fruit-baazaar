@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from "../../config/api";
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
@@ -12,9 +12,7 @@ const Order = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8080/api/orders/all"
-      );
+      const response = await api.get("/api/orders/all");
       setOrders(response.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
