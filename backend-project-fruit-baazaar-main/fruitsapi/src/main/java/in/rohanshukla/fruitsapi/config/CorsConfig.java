@@ -1,13 +1,15 @@
 package in.rohanshukla.fruitsapi.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+// Disabled - Using SecurityConfig CORS instead
+// @Configuration
 public class CorsConfig {
 
+    // Disabled - Using SecurityConfig CORS instead
+    /*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -26,4 +28,5 @@ public class CorsConfig {
             }
         };
     }
+    */
 }
