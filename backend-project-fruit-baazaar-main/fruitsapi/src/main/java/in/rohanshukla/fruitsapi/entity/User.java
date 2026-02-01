@@ -21,4 +21,9 @@ public class User {
     // 🔐 Forgot Password fields
     private String resetToken;
     private LocalDateTime resetTokenExpiry;
+
+    // 🔥 Google Auth fields
+    private String provider; // "EMAIL" or "GOOGLE"
+    private String avatar;  // Profile picture URL
+    private String firebaseUid; // Firebase user ID
 }
